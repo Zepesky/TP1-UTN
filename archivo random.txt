@@ -3,11 +3,11 @@
 Son las más importantes porque te dan el “estado general” de la población.
 
 🩺 Salud general
-Promedio de edad de los pacientes
-Promedio de temperatura corporal
-Promedio de frecuencia cardíaca
-Promedio de presión arterial
-Promedio de nivel de dolor
+Promedio de edad de los pacientes*
+Promedio de temperatura corporal*
+Promedio de frecuencia cardíaca*
+Promedio de presión arterial*
+Promedio de nivel de dolor*
 
 👉 Sirven para ver si la población está sana o no.
 
@@ -38,10 +38,10 @@ Paciente con mayor dolor *
 Te muestran el extremo contrario.
 
 🌿 Casos más leves
-Paciente con menor temperatura
-Paciente con menor dolor
-Paciente con menor presión
-Paciente más joven
+Paciente con menor temperatura*
+Paciente con menor dolor*
+Paciente con menor presión*
+Paciente más joven*
 
 👉 Sirve para ver el “caso más sano” o menos riesgoso.
 

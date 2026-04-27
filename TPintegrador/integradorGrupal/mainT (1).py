@@ -38,6 +38,32 @@ temp_min_nombre = ""
 temp_min_genero = ""
 temp_min_ingreso = ""
 
+min_presion = 0
+pres_min_edad = 0
+pres_min_nombre = ""
+pres_min_genero = ""
+pres_min_ingreso = ""
+
+min_dolor = 0
+dolor_min_edad = 0
+dolor_min_nombre = ""
+dolor_min_genero = ""
+dolor_min_ingreso = ""
+
+min_frec_cardiaca = 0
+frec_min_edad = 0
+frec_min_nombre = ""
+frec_min_genero = ""
+frec_min_ingreso = ""
+
+#contadores
+suma_temperatura = 0
+suma_presion = 0
+suma_dolor = 0
+suma_frec_cardiaca = 0
+suma_edades = 0
+casos_criticos_pediatricos = 0
+casos_criticos = 0
 A_pos = 0
 A_neg = 0
 B_pos = 0
@@ -47,59 +73,56 @@ AB_neg = 0
 O_pos = 0
 O_neg = 0
 
-
-print(Fore.RED + """
-    ====================================
-        ✙---------MEDICPY---------✙ 
-    ====================================
-""")
 #Entradas...
 while bandera:
+    print(f"┌{'─' * ancho}┐")
+    print( f"│ {Fore.RED} {'✙ MEDICPY':<{ancho - 3}} {Style.RESET_ALL}│ ")
+    print(f"│  {'Bienvenido!':<34}│")
+    print(f"└{'─' * ancho}┘")
     
-    print(f"""
-    ====================================
-    |          -OPERACIONES-           |
-    |**********************************|
-    |-1.Archivo de pacientes           |
-    |-2.Estadisticas                   |
-    |-3.Deportes                       |
-    ====================================
-    |-Cantidad de pacientes: {pacientes}         |
-    ====================================
-    """)
+    print(f"┌{'─' * ancho}┐")
+    print(f"│  {'Cantidad de pacientes':<9} →  {(pacientes):<9}│")
+    print(f"├{'─' * ancho}┤")
+    print(f"│  {'Pediatria Urgencia':<9} →  {(casos_criticos_pediatricos):<12}│")
+    print(f"│  {'Guardia urgencia':<9} →  {(casos_criticos):<14}│")
+    print(f"└{'─' * ancho}┘")
+
+    print(f"┌{'─' * ancho}┐")
+    print(f"│ {Fore.GREEN} {'1'} →  {"Archivo de pacientes":<28} {Style.RESET_ALL}│")
+    print(f"│ {Fore.GREEN} {'2'} →  {"Estadisticas":<28} {Style.RESET_ALL}│")
+    print(f"└{'─' * ancho}┘")
+    
     while True:
         try:
-            operacion = int(input("Que operacion desea realizar: "))
+            operacion = int(input(f"{Fore.GREEN}|>Que operacion desea realizar: {Style.RESET_ALL}"))
             if operacion < 1 or operacion > 5:
-                print("Ingrese una opcion valida del menu")
+                print(f"{Back.RED} |⚠ -Ingrese una opcion valida del menu. {Style.RESET_ALL}")
                 continue
             break  
         
         except ValueError:
-            print("Ingrese un numero valido")
+            print(f"{Back.RED} |⚠ -Ingrese un valor valido. {Style.RESET_ALL}")
     
     if operacion == 1:
         #archivo de paciente:
         while True:
             
-            pacientes += 1
-            
             #Datos doctor
-            doctor = input(Fore.MAGENTA + "|-Doctor a cargo: " + Style.RESET_ALL)
+            doctor = input(Fore.MAGENTA + "|>Doctor a cargo: " + Style.RESET_ALL)
 
             #paciente
-            ingreso = input(Fore.GREEN + "|-Hora de ingreso 24HS: "+ Style.RESET_ALL)
-            nombre_paciente = input(Fore.GREEN + "|-Nombre del paciente: "+ Style.RESET_ALL)
-            apellido_paciente = input(Fore.GREEN + "|-Apellido: "+ Style.RESET_ALL)
+            ingreso = input(Fore.GREEN + "|>Hora de ingreso 24HS: "+ Style.RESET_ALL)
+            nombre_paciente = input(Fore.GREEN + "|>Nombre del paciente: "+ Style.RESET_ALL)
+            apellido_paciente = input(Fore.GREEN + "|>Apellido: "+ Style.RESET_ALL)
             while True:
                 try:
-                    edad_paciente = int(input(Fore.GREEN + "|-Edad: " + Style.RESET_ALL))
+                    edad_paciente = int(input(Fore.GREEN + "|>Edad: " + Style.RESET_ALL))
                     if edad_paciente <= 0:
-                        print("La edad debe ser mayor a 0")
+                        print(f"{Back.RED} |⚠ -La edad debe ser mayor a 0. {Style.RESET_ALL}")
                         continue
                     break
                 except ValueError:
-                    print("Ingrese un número válido para la edad")
+                    print(f"{Back.RED} |⚠ -¡Ingrese un número válido para la edad! {Style.RESET_ALL}")
                     
             genero = input(Fore.GREEN + "|-Género: (Femenino/Masculino/Otro): "+ Style.RESET_ALL)
             sangre = input(Fore.GREEN + "|-Tipo de Sangre: [A,B,AB,0][+ -]: "+ Style.RESET_ALL)
@@ -107,41 +130,42 @@ while bandera:
                 try:
                     kilos = float(input(Fore.GREEN + "|-Ingrese su peso: " + Style.RESET_ALL))
                     if kilos <= 0:
-                        print("El peso debe ser mayor a 0")
+                        print(f"{Back.RED} El peso debe ser mayor a 0 {Style.RESET_ALL}")
                         continue   
                     break
                 except ValueError:
-                    print("Ingrese un número válido para el peso")        
+                    print(f"{Back.RED} |⚠ -¡Ingrese un peso válido! {Style.RESET_ALL}")      
 
             while True:
                 try:
                     temperatura = float(input(Fore.YELLOW +"|Temperatura del paciente: "+ Style.RESET_ALL))
                     if temperatura < 0:
-                        print("La temperatura no puede ser negativa")
+                        print(f"{Back.RED} |⚠ -¡La temperatura no puede ser negativa! {Style.RESET_ALL}")
+                        
                         continue
                     break
                 except ValueError:
-                    print("Ingrese una temperatura válida")
+                    print(f"{Back.RED} |⚠ -¡Ingrese una temperatura válida! {Style.RESET_ALL}")    
 
             while True:
                 try:
                     frecuencia_cardiaca = float(input(Fore.YELLOW +"|Frecuencia cardíaca: "+ Style.RESET_ALL))
                     if frecuencia_cardiaca == 0:
-                        print("La frecuencia cardíaca no puede ser 0")
+                        print(f"{Back.RED} |⚠ -La frecuencia cardíaca no puede ser 0 {Style.RESET_ALL}") 
                         continue    
                     break
                 except ValueError:
-                    print("Ingrese un valor numérico válido")
+                    print(f"{Back.RED} |⚠ -Ingrese un valor numérico válido {Style.RESET_ALL}") 
 
             while True:
                 try:
                     presion = float(input(Fore.YELLOW +"|Presión arterial: "+ Style.RESET_ALL))
                     if presion < 0:
-                        print("La presión arterial no puede ser 0")
+                        print(f"{Back.RED} |⚠ -La presión arterial no puede ser 0 {Style.RESET_ALL}")
                         continue
                     break
                 except ValueError:
-                    print("Ingrese un valor numérico válido")
+                    print(f"{Back.RED} |⚠ -Ingrese un valor numérico válido {Style.RESET_ALL}")
 
             while True:
                 try:
@@ -149,7 +173,7 @@ while bandera:
                     if 0 <= dolor <= 10:
                         break
                 except ValueError:
-                    print("Ingrese un número válido")
+                    print(f"{Back.RED} |⚠ -Ingrese un valor numérico válido {Style.RESET_ALL}")
 
             #Categoricas
             tos = str(input(Fore.YELLOW +"|-¿Presenta tos? (sí/no): "+ Style.RESET_ALL))
@@ -164,11 +188,11 @@ while bandera:
 |--> """ + Style.RESET_ALL))
 
                     if respiracion < 1 or respiracion > 4:
-                        print("Ingrese un número entre 1 y 4")
+                        print(f"{Back.RED} |⚠ -Ingrese un número entre 1 y 4 {Style.RESET_ALL}")
                         continue
                     break 
                 except ValueError:
-                    print("Ingrese un número válido")
+                    print(f"{Back.RED} |⚠ -Ingrese un valor numérico válido {Style.RESET_ALL}")
 
             vomitos = str(input(Fore.YELLOW +"|-Vómitos: (sí/no): "+ Style.RESET_ALL))
             medicamentos = str(input(Fore.YELLOW +"|-Toma medicación? (sí/no): "+ Style.RESET_ALL))
@@ -247,6 +271,34 @@ while bandera:
                 temp_min_genero = genero
                 temp_min_edad = edad_paciente
                 temp_min_ingreso = ingreso
+
+            if min_presion == 0 or presion < min_presion:
+                min_presion = presion
+                pres_min_nombre = nombre_paciente + apellido_paciente
+                pres_min_genero = genero
+                pres_min_edad = edad_paciente
+                pres_min_ingreso = ingreso
+
+            if min_dolor == 0 or dolor < min_dolor:
+                min_dolor = dolor
+                dolor_min_nombre = nombre_paciente + apellido_paciente
+                dolor_min_genero = genero
+                dolor_min_edad = edad_paciente
+                dolor_min_ingreso = ingreso
+
+            if min_frec_cardiaca == 0 or frecuencia_cardiaca < min_frec_cardiaca:
+                min_frec_cardiaca = frecuencia_cardiaca
+                frec_min_nombre = nombre_paciente + apellido_paciente
+                frec_min_genero = genero
+                frec_min_edad = edad_paciente
+                frec_min_ingreso = ingreso
+            #--------------------
+            #Contadores de promedios
+            suma_temperatura += temperatura
+            suma_presion += presion
+            suma_dolor += dolor
+            suma_frec_cardiaca += frecuencia_cardiaca
+            suma_edades += edad_paciente
             #--------------------
             if sangre == "A+" or sangre == "a+":
                 A_pos += 1
@@ -314,12 +366,12 @@ while bandera:
                     try:
                         cuantas_veces = int(input(Fore.YELLOW + "|-¿Cuántas veces a la semana haces ejercicio? 1/5: " + Style.RESET_ALL))
                         if cuantas_veces < 1 or cuantas_veces > 5:
-                            print("Ingrese un número entre 1 y 5")
+                            print(f"{Back.RED} |⚠ -Ingrese un valor numérico válido {Style.RESET_ALL}")
                             continue
                         break  
 
                     except ValueError:
-                        print("Ingrese un número válido")
+                        print(f"{Back.RED} |⚠ -Ingrese un valor numérico válido {Style.RESET_ALL}")
 
                 clima_agua = input(Fore.YELLOW +"|-¿En que clima se encuentra,cuando entrena? frio/templado/calor: "+ Style.RESET_ALL)
                 if clima_agua == "frio":
@@ -359,32 +411,44 @@ while bandera:
 
             agua_paciente = (agua_total_mililitros/1000)
 
-            print(f"""
-    ====================================
-    Doctor a cargo: {doctor}
-    ------------------------------------
-            Datos del paciente
-    Paciente: {nombre_paciente} {apellido_paciente}
-    Edad: {edad_paciente}
-    Genero: {genero}
-    Sangre: {sangre}
-    ------------------------------------
-    Medicación previa: {Fore.LIGHTYELLOW_EX}{medicamentos}{Style.RESET_ALL}
-    Respiración: {Fore.LIGHTCYAN_EX}{respiracion_str}{Style.RESET_ALL}
-    Presión: {Fore.LIGHTCYAN_EX}{presion}{Style.RESET_ALL}
-    Temperatura: {Fore.LIGHTCYAN_EX}{temperatura}{Style.RESET_ALL}
-    Dolor: {Fore.LIGHTCYAN_EX}{dolor}{Style.RESET_ALL}
-    FrCardiaca: {Fore.LIGHTCYAN_EX}{frecuencia_cardiaca}{Style.RESET_ALL}
-    Ejercicio: {Fore.LIGHTCYAN_EX}{ejercicio}{Style.RESET_ALL}
-    Agua que debe tomar el paciente: {Fore.LIGHTCYAN_EX} {agua_paciente:.2f}{Style.RESET_ALL}
-    ------------------------------------
-    ====================================
-            """)
+            print(f"┌{'─' * ancho}┐")
+            print(f"│ {Fore.RED}{'✙ MEDICPY':<{ancho - 3}}{Style.RESET_ALL}│")
+            print(f"├{'─' * ancho}┤")
 
-            continuar = input("Desea realizar otro archivo? (s/n): ")
+            print(f"│ {Fore.GREEN}{'Paciente':<12} →  {nombre_paciente:<25}{Style.RESET_ALL}│")
+            print(f"│ {Fore.GREEN}{'Edad':<12} →  {edad_paciente:<25}{Style.RESET_ALL}│")
+            print(f"│ {Fore.GREEN}{'Genero':<12} →  {genero:<25}{Style.RESET_ALL}│")
+            print(f"│ {Fore.GREEN}{'Sangre':<12} →  {sangre:<25}{Style.RESET_ALL}│")
+
+            print(f"├{'─' * ancho}┤")
+
+            print(f"│ {Fore.GREEN}{'Medicación':<12} →  {medicamentos:<25}{Style.RESET_ALL}│")
+            print(f"│ {Fore.GREEN}{'Respiración':<12} →  {respiracion:<25}{Style.RESET_ALL}│")
+            print(f"│ {Fore.GREEN}{'Presión':<12} →  {presion:<25}{Style.RESET_ALL}│")
+            print(f"│ {Fore.GREEN}{'Temperatura':<12} →  {temperatura:<25}{Style.RESET_ALL}│")
+            print(f"│ {Fore.GREEN}{'Dolor':<12} →  {dolor:<25}{Style.RESET_ALL}│")
+            print(f"│ {Fore.GREEN}{'Frecuencia':<12} →  {frecuencia_cardiaca:<25}{Style.RESET_ALL}│")
+            print(f"│ {Fore.GREEN}{'Ejercicio':<12} →  {ejercicio:<25}{Style.RESET_ALL}│")
+            print(f"│ {Fore.GREEN}{'Agua':<12} →  {agua_total_mililitros:<25}{Style.RESET_ALL}│")
+
+            print(f"└{'─' * ancho}┘")
+
+            pacientes += 1
+            
+            if dolor_alto:
+                if fiebre:
+                    if riesgo_edad:
+                        casos_criticos += 1
+            elif dolor_alto:
+                if fiebre:
+                    if vomitos:
+                        if edad_paciente < 12:
+
+                            casos_criticos_pediatricos += 1
+            continuar = input(Fore.GREEN + f"|>Desea realizar otro archivo? (s/n): "+ Style.RESET_ALL)
 
             if continuar != "s":
-                print("Saliendo...")
+                print(Fore.YELLOW + f"|>Saliendo..."+ Style.RESET_ALL)
                 break
 
     elif operacion == 2:
@@ -402,15 +466,15 @@ while bandera:
         """)
         while True:
             try:
-                estadisticas = int(input("Que gráfico quiere ver [1,2,3]: "))
+                estadisticas = int(input(Fore.GREEN + f"Que gráfico quiere ver [1,2,3]: "+ Style.RESET_ALL))
                 break
             
             except ValueError:
-                print("Ingrese un número válido")
+                print(f"{Back.RED} |⚠ -Ingrese un valor numérico válido {Style.RESET_ALL}")
 
         
         if estadisticas == 1 and pacientes == 0:
-            print("No hay datos para graficar...")
+            print(f"{Back.RED} |⚠ -No hay datos para graficar... {Style.RESET_ALL}")   
 
 
         elif estadisticas == 1:
@@ -418,7 +482,7 @@ while bandera:
             total = masculinos + femeninos
             
             if total == 0:
-                print("No hay datos para graficar...")
+                print(f"{Back.RED} |⚠ -No hay datos para graficar... {Style.RESET_ALL}")   
             
             else:
                 porcentaje_m = (masculinos / total) * 100
@@ -450,7 +514,7 @@ while bandera:
                 
                 volver = input("volver? (s/n): ")
                 if volver != "s":
-                    print("Saliendo...")
+                    print(Fore.YELLOW + f"|>Saliendo..."+ Style.RESET_ALL)
                     bandera = False
 
 
@@ -459,81 +523,81 @@ while bandera:
                 total = A_pos + A_neg + B_pos + B_neg + AB_pos + AB_neg + O_pos + O_neg
 
                 if total == 0:
-                    print("No hay datos para graficar...")
-                    
-                print("""
+                    print(f"{Back.RED} |⚠ -No hay datos para graficar... {Style.RESET_ALL}")   
+                else:    
+                    print("""
     ====================================
     |            -Sangres-             |
     ====================================
                 """)
-                if A_pos > 0:
-                    porcentaje_A_pos = (A_pos / total) * 100
-                    largo_barra = 30
-                    lleno = int((porcentaje_A_pos / 100) * largo_barra)
-                    vacio = largo_barra - lleno
-                    barra = "█" * lleno + "░" * vacio
-                    print(f"|A+|{porcentaje_A_pos:.1f}%| |{barra}|")
+                    if A_pos > 0:
+                        porcentaje_A_pos = (A_pos / total) * 100
+                        largo_barra = 30
+                        lleno = int((porcentaje_A_pos / 100) * largo_barra)
+                        vacio = largo_barra - lleno
+                        barra = "█" * lleno + "░" * vacio
+                        print(f"|A+|{porcentaje_A_pos:.1f}%| |{barra}|")
 
-                if A_neg > 0:
-                    porcentaje_A_neg = (A_neg / total) * 100
-                    largo_barra = 30
-                    lleno = int((porcentaje_A_neg / 100) * largo_barra)
-                    vacio = largo_barra - lleno
-                    barra = "█" * lleno + "░" * vacio
-                    print(f"|A-|{porcentaje_A_neg:.1f}%| |{barra}|")
-                    
-                if B_pos > 0:
-                    porcentaje_B_pos = (B_pos / total) * 100
-                    largo_barra = 30
-                    lleno = int((porcentaje_B_pos / 100) * largo_barra)
-                    vacio = largo_barra - lleno
-                    barra = "█" * lleno + "░" * vacio
-                    print(f"|B+|{porcentaje_B_pos:.1f}%| |{barra}|")
-                    
-                if B_neg > 0:
-                    porcentaje_B_neg = (B_neg / total) * 100
-                    largo_barra = 30
-                    lleno = int((porcentaje_B_neg / 100) * largo_barra)
-                    vacio = largo_barra - lleno
-                    barra = "█" * lleno + "░" * vacio
-                    print(f"|B-|{porcentaje_B_neg:.1f}%| |{barra}|")
+                    if A_neg > 0:
+                        porcentaje_A_neg = (A_neg / total) * 100
+                        largo_barra = 30
+                        lleno = int((porcentaje_A_neg / 100) * largo_barra)
+                        vacio = largo_barra - lleno
+                        barra = "█" * lleno + "░" * vacio
+                        print(f"|A-|{porcentaje_A_neg:.1f}%| |{barra}|")
 
-                if AB_pos > 0:
-                    porcentaje_AB_pos = (AB_pos / total) * 100
-                    largo_barra = 30
-                    lleno = int((porcentaje_AB_pos / 100) * largo_barra)
-                    vacio = largo_barra - lleno
-                    barra = "█" * lleno + "░" * vacio
-                    print(f"|AB+|{porcentaje_AB_pos:.1f}%| |{barra}|")
+                    if B_pos > 0:
+                        porcentaje_B_pos = (B_pos / total) * 100
+                        largo_barra = 30
+                        lleno = int((porcentaje_B_pos / 100) * largo_barra)
+                        vacio = largo_barra - lleno
+                        barra = "█" * lleno + "░" * vacio
+                        print(f"|B+|{porcentaje_B_pos:.1f}%| |{barra}|")
 
-                if AB_neg > 0:
-                    porcentaje_AB_neg = (AB_neg / total) * 100
-                    largo_barra = 30
-                    lleno = int((porcentaje_AB_neg / 100) * largo_barra)
-                    vacio = largo_barra - lleno
-                    barra = "█" * lleno + "░" * vacio
-                    print(f"|AB-|{porcentaje_AB_neg:.1f}%| |{barra}|")
-                    
-                if O_pos > 0:
-                    porcentaje_O_pos = (O_pos / total) * 100
-                    largo_barra = 30
-                    lleno = int((porcentaje_O_pos / 100) * largo_barra)
-                    vacio = largo_barra - lleno
-                    barra = "█" * lleno + "░" * vacio
-                    print(f"|O+|{porcentaje_O_pos:.1f}%| |{barra}|")
+                    if B_neg > 0:
+                        porcentaje_B_neg = (B_neg / total) * 100
+                        largo_barra = 30
+                        lleno = int((porcentaje_B_neg / 100) * largo_barra)
+                        vacio = largo_barra - lleno
+                        barra = "█" * lleno + "░" * vacio
+                        print(f"|B-|{porcentaje_B_neg:.1f}%| |{barra}|")
 
-                if O_neg > 0:
-                    porcentaje_O_neg = (O_neg / total) * 100
-                    largo_barra = 30
-                    lleno = int((porcentaje_O_neg / 100) * largo_barra)
-                    vacio = largo_barra - lleno
-                    barra = "█" * lleno + "░" * vacio
-                    print(f"|O-|{porcentaje_O_neg:.1f}%| |{barra}|")
-                    
-                    volver = input("volver? (s/n): ")
-                    if volver != "s":
-                        print("Saliendo...")
-                        bandera = False
+                    if AB_pos > 0:
+                        porcentaje_AB_pos = (AB_pos / total) * 100
+                        largo_barra = 30
+                        lleno = int((porcentaje_AB_pos / 100) * largo_barra)
+                        vacio = largo_barra - lleno
+                        barra = "█" * lleno + "░" * vacio
+                        print(f"|AB+|{porcentaje_AB_pos:.1f}%| |{barra}|")
+
+                    if AB_neg > 0:
+                        porcentaje_AB_neg = (AB_neg / total) * 100
+                        largo_barra = 30
+                        lleno = int((porcentaje_AB_neg / 100) * largo_barra)
+                        vacio = largo_barra - lleno
+                        barra = "█" * lleno + "░" * vacio
+                        print(f"|AB-|{porcentaje_AB_neg:.1f}%| |{barra}|")
+
+                    if O_pos > 0:
+                        porcentaje_O_pos = (O_pos / total) * 100
+                        largo_barra = 30
+                        lleno = int((porcentaje_O_pos / 100) * largo_barra)
+                        vacio = largo_barra - lleno
+                        barra = "█" * lleno + "░" * vacio
+                        print(f"|O+|{porcentaje_O_pos:.1f}%| |{barra}|")
+
+                    if O_neg > 0:
+                        porcentaje_O_neg = (O_neg / total) * 100
+                        largo_barra = 30
+                        lleno = int((porcentaje_O_neg / 100) * largo_barra)
+                        vacio = largo_barra - lleno
+                        barra = "█" * lleno + "░" * vacio
+                        print(f"|O-|{porcentaje_O_neg:.1f}%| |{barra}|")
+
+                volver = input(Fore.YELLOW + f"|>volver? (s/n): "+ Style.RESET_ALL)
+                if volver != "s":
+                    print(Fore.YELLOW + f"|>Saliendo..."+ Style.RESET_ALL)
+                    bandera = False
 
         elif estadisticas == 3:
             print("""
@@ -542,12 +606,12 @@ while bandera:
     |**********************************|
     |-1.Casos Criticos                 |
     |-2.Casos Leves                    |
-    |-3.Promedios                      |
+    |-3.Promedios en guardia           |
     |-4.                               |
     |-5.                               |
     ====================================
             """)
-            casos = int(input("Que estadisticas presisas ver: "))
+            casos = int(input(Fore.GREEN + f"|>Que estadisticas presisas ver: "+ Style.RESET_ALL))
             
             if casos == 1:
                 print("""
@@ -560,10 +624,12 @@ while bandera:
     |4.Mayor frecuencia cardíaca       |
     ====================================
                 """)
-                caso_critico = input("Que caso critico desea ver: ")
+                caso_critico = input(Fore.GREEN + f"|>Que caso critico desea ver: "+ Style.RESET_ALL)
                 if caso_critico == "1":
-
+                    
                     print(f"┌{'─' * ancho}┐")
+                    print( f"│ {Fore.RED} {'✙ MEDICPY':<{ancho - 3}} {Style.RESET_ALL}│ ")
+                    print(f"├{'─' * ancho}┤")
                     print(f"│  {'Mayor temperatura registrada':<34}│")
                     print(f"├{'─' * ancho}┤")
                     print(f"│  {'Ingreso':<9} →  {temp_max_ingreso:<21}│")
@@ -573,56 +639,66 @@ while bandera:
                     print(f"│  {'Temp':<9} →  {str(max_temperatura) + ' °C  ⚠':<21}│")
                     print(f"└{'─' * ancho}┘")
 
-                    volver = input("volver? (s/n): ")
+                    volver = input(Fore.YELLOW + f"|>volver? (s/n): "+ Style.RESET_ALL)
                     if volver != "s":
-                        print("Saliendo...")
+                        print(Fore.YELLOW + f"|>Saliendo..."+ Style.RESET_ALL)
                         bandera = False
                     
                 elif caso_critico == "2":
-                    print(f"""
-    ======================================
-    |ingreso: [{pres_max_ingreso}        |
-    |************************************|
-    |Nombre: [{pres_max_nombre}]         |
-    |Edad: [{pres_max_edad}]             |
-    |Genero: [{pres_max_genero}]         |
-    |Presion: [{max_presion}]            |
-    ======================================
-                    """)
-                    volver = input("volver? (s/n): ")
+                    
+                    print(f"┌{'─' * ancho}┐")
+                    print( f"│ {Fore.RED} {'✙ MEDICPY':<{ancho - 3}} {Style.RESET_ALL}│ ")
+                    print(f"├{'─' * ancho}┤")
+                    print(f"│  {'Mayor Presion registrada':<34}│")
+                    print(f"├{'─' * ancho}┤")
+                    print(f"│  {'Ingreso':<9} →  {pres_max_ingreso:<21}│")
+                    print(f"│  {'Nombre':<9} →  {pres_max_nombre:<21}│")
+                    print(f"│  {'Edad':<9} →  {str(pres_max_edad) + ' años':<21}│")
+                    print(f"│  {'Genero':<9} →  {pres_max_genero:<21}│")
+                    print(f"│  {'Presion':<9} →  {str(max_presion):<21}│")
+                    print(f"└{'─' * ancho}┘")
+
+                    volver = input(Fore.YELLOW + f"|>volver? (s/n): "+ Style.RESET_ALL)
                     if volver != "s":
-                        print("Saliendo...")
+                        print(Fore.YELLOW + f"|>Saliendo..."+ Style.RESET_ALL)
                         bandera = False
                         
                 elif caso_critico == "3":
-                    print(f"""
-    =======================================
-    |ingreso: [{dolor_max_ingreso}        |
-    |*************************************|
-    |Nombre: [{dolor_max_nombre}]         |
-    |Edad: [{dolor_max_edad}]             |
-    |Genero: [{dolor_max_genero}]         |
-    |Dolor: [{max_dolor}]                 |
-    =======================================
-                    """)
-                    volver = input("volver? (s/n): ")
+                    
+                    print(f"┌{'─' * ancho}┐")
+                    print( f"│ {Fore.RED} {'✙ MEDICPY':<{ancho - 3}} {Style.RESET_ALL}│ ")                    
+                    print(f"├{'─' * ancho}┤")
+                    print(f"│  {'Mayor Dolor registrada':<34}│")
+                    print(f"├{'─' * ancho}┤")
+                    print(f"│  {'Ingreso':<9} →  {dolor_max_ingreso:<21}│")
+                    print(f"│  {'Nombre':<9} →  {dolor_max_nombre:<21}│")
+                    print(f"│  {'Edad':<9} →  {str(dolor_max_edad) + ' años':<21}│")
+                    print(f"│  {'Genero':<9} →  {dolor_max_genero:<21}│")
+                    print(f"│  {'Dolor':<9} →  {str(max_dolor):<21}│")
+                    print(f"└{'─' * ancho}┘")
+
+                    volver = input(Fore.YELLOW + f"|>volver? (s/n): "+ Style.RESET_ALL)
                     if volver != "s":
-                        print("Saliendo...")
+                        print(Fore.YELLOW + f"|>Saliendo..."+ Style.RESET_ALL)
                         bandera = False
                         
                 elif caso_critico == "4":
+                    
                     print(f"┌{'─' * ancho}┐")
+                    print( f"│ {Fore.RED} {'✙ MEDICPY':<{ancho - 3}} {Style.RESET_ALL}│ ")
+                    print(f"├{'─' * ancho}┤")
                     print(f"│  {'Mayor Frecuencia cardiaca':<34}│")
                     print(f"├{'─' * ancho}┤")
                     print(f"│  {'Ingreso':<9} →  {frec_cardiaca_max_ingreso:<21}│")
                     print(f"│  {'Nombre':<9} →  {frec_cardiaca_max_nombre:<21}│")
                     print(f"│  {'Edad':<9} →  {str(frec_cardiaca_max_edad) + ' años':<21}│")
                     print(f"│  {'Genero':<9} →  {frec_cardiaca_max_genero:<21}│")
-                    print(f"│  {'Temp':<9} →  {str(max_frec_cardiaca) + ' °C  ⚠':<21}│")
+                    print(f"│  {'Frecuencia':<9} →  {str(max_frec_cardiaca):<21}│")
                     print(f"└{'─' * ancho}┘")
-                    volver = input("volver? (s/n): ")
+                    
+                    volver = input(Fore.YELLOW + f"|>volver? (s/n): "+ Style.RESET_ALL)
                     if volver != "s":
-                        print("Saliendo...")
+                        print(Fore.YELLOW + f"|>Saliendo..."+ Style.RESET_ALL)
                         bandera = False
                         
             elif casos == 2:
@@ -632,31 +708,107 @@ while bandera:
     |**********************************|
     |1.Menor temperatura               |
     |2.Menor presion                   |
-    |3.                                |
+    |3.Menor dolor                     |
+    |4.Menor Frecuencia cardiaca       |
     ====================================
                 """)
-                caso_leve = input("Que caso critico desea ver: ")
+                caso_leve = input(Fore.GREEN + f"|>Que caso desea ver: "+ Style.RESET_ALL)
                 if caso_leve == "1":
-                    print(f"""
-    ======================================
-    |ingreso: [{temp_min_ingreso}        |
-    |************************************|
-    |Nombre [{temp_min_nombre}]          |
-    |Edad [{temp_min_edad}]              |
-    |Genero [{temp_min_genero}]          |
-    |Temperatura [{min_temperatura}]     |
-    ======================================
-                    """)
-                    volver = input("volver? (s/n): ")
+
+                    print(f"┌{'─' * ancho}┐")
+                    print( f"│ {Fore.RED} {'✙ MEDICPY':<{ancho - 3}} {Style.RESET_ALL}│ ")
+                    print(f"├{'─' * ancho}┤")
+                    print(f"│  {'Menor Temperatura':<34}│")
+                    print(f"├{'─' * ancho}┤")
+                    print(f"│  {'Ingreso':<9} →  {temp_min_ingreso:<21}│")
+                    print(f"│  {'Nombre':<9} →  {temp_min_nombre:<21}│")
+                    print(f"│  {'Edad':<9} →  {str(temp_min_edad) + ' años':<21}│")
+                    print(f"│  {'Genero':<9} →  {temp_min_genero:<21}│")
+                    print(f"│  {'Temp':<9} →  {str(min_temperatura) + ' °C ':<21}│")
+                    print(f"└{'─' * ancho}┘")
+
+                    volver = input(Fore.YELLOW + f"|>volver? (s/n): "+ Style.RESET_ALL)
                     if volver != "s":
-                        print("Saliendo...")
+                        print(Fore.YELLOW + f"|>Saliendo..."+ Style.RESET_ALL)
                         bandera = False
                         
+                elif caso_leve == "2":
+
+                    print(f"┌{'─' * ancho}┐")
+                    print( f"│ {Fore.RED} {'✙ MEDICPY':<{ancho - 3}} {Style.RESET_ALL}│ ")                        
+                    print(f"├{'─' * ancho}┤")
+                    print(f"│  {'Menor Presion':<34}│")
+                    print(f"├{'─' * ancho}┤")
+                    print(f"│  {'Ingreso':<9} →  {pres_min_ingreso:<21}│")
+                    print(f"│  {'Nombre':<9} →  {pres_min_nombre:<21}│")
+                    print(f"│  {'Edad':<9} →  {str(pres_min_edad) + ' años':<21}│")
+                    print(f"│  {'Genero':<9} →  {pres_min_genero:<21}│")
+                    print(f"│  {'Presion':<9} →  {str(min_presion):<21}│")
+                    print(f"└{'─' * ancho}┘")
+                    
+                    volver = input(Fore.YELLOW + f"|>volver? (s/n): "+ Style.RESET_ALL)
+                    if volver != "s":
+                        print(Fore.YELLOW + f"|>Saliendo..."+ Style.RESET_ALL)
+                        bandera = False
+                        
+                elif caso_leve == "3":
+
+                    print(f"┌{'─' * ancho}┐")
+                    print( f"│ {Fore.RED} {'✙ MEDICPY':<{ancho - 3}} {Style.RESET_ALL}│ ")                    
+                    print(f"├{'─' * ancho}┤")
+                    print(f"│  {'Menor Dolor':<34}│")
+                    print(f"├{'─' * ancho}┤")
+                    print(f"│  {'Ingreso':<9} →  {dolor_min_ingreso:<21}│")
+                    print(f"│  {'Nombre':<9} →  {dolor_min_nombre:<21}│")
+                    print(f"│  {'Edad':<9} →  {str(dolor_min_edad) + ' años':<21}│")
+                    print(f"│  {'Genero':<9} →  {dolor_min_genero:<21}│")
+                    print(f"│  {'Dolor':<9} →  {str(min_dolor):<21}│")
+                    print(f"└{'─' * ancho}┘")
+
+                    volver = input(Fore.YELLOW + f"|>volver? (s/n): "+ Style.RESET_ALL)
+                    if volver != "s":
+                        print(Fore.YELLOW + f"|>Saliendo..."+ Style.RESET_ALL)
+                        bandera = False
+                
+                elif caso_leve == "4":
+
+                    print(f"┌{'─' * ancho}┐")
+                    print( f"│ {Fore.RED} {'✙ MEDICPY':<{ancho - 3}} {Style.RESET_ALL}│ ")                   
+                    print(f"├{'─' * ancho}┤")
+                    print(f"│  {'Menor Frecuencia cardiaca':<34}│")
+                    print(f"├{'─' * ancho}┤")
+                    print(f"│  {'Ingreso':<9} →  {frec_min_ingreso:<21}│")
+                    print(f"│  {'Nombre':<9} →  {frec_min_nombre:<21}│")
+                    print(f"│  {'Edad':<9} →  {str(frec_min_edad) + ' años':<21}│")
+                    print(f"│  {'Genero':<9} →  {frec_min_genero:<21}│")
+                    print(f"│  {'Frecuencia':<9} →  {str(min_frec_cardiaca):<21}│")
+                    print(f"└{'─' * ancho}┘")
+            elif casos == 3:
+                if pacientes > 0:
+                    promedio_temperatura = suma_temperatura / pacientes
+                    promedio_dolor = suma_dolor / pacientes
+                    promedio_presion = suma_presion / pacientes
+                    promedio_frec_cardiaca = suma_frec_cardiaca / pacientes
+                    promedio_edades = suma_edades / pacientes
+
+                    print(f"┌{'─' * ancho}┐")
+                    print( f"│ {Fore.RED} {'✙ MEDICPY':<{ancho - 3}} {Style.RESET_ALL}│ ")                    
+                    print(f"├{'─' * ancho}┤")
+                    print(f"│  {"Promedios Generales":<34}│")
+                    print(f"├{'─' * ancho}┤")
+                    print(f"│  {'Temperatura':<9} →  {promedio_temperatura:<21.2f}│")
+                    print(f"│  {'Presion':<9} →  {promedio_presion:<21.2f}│")
+                    print(f"│  {'Edades':<9} →  {f'{promedio_edades:.0f} años':<21}│")
+                    print(f"│  {'Frecuencia':<9} →  {promedio_frec_cardiaca:<21.2f}│")
+                    print(f"│  {'Dolor':<9} →  {promedio_dolor:<21.2f}│")
+                    print(f"└{'─' * ancho}┘")
+                else:
+                    print(f"{Back.RED} |⚠ -No hay pacientes ingresados. {Style.RESET_ALL}")   
         else:
-            print("Ingrese valor valido!")
-            operacion = int(input("Que operacion desea realizar: "))
+            print(f"{Back.RED} |⚠ -Ingrese un valor valido. {Style.RESET_ALL}")   
+            operacion = int(input(Fore.GREEN + f"|>Que operacion desea realizar: "+ Style.RESET_ALL))
         
-    continuar_menu = input("Desea realizar alguna otra operacion? (s/n): ")
+    continuar_menu = input(Fore.GREEN + f"|>Desea realizar alguna otra operacion? (s/n): "+ Style.RESET_ALL)
     if continuar_menu != "s":
-        print("Saliendo...")
+        print(Fore.YELLOW + f"|>Saliendo..."+ Style.RESET_ALL)
         bandera = False
