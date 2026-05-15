@@ -95,7 +95,7 @@ while bandera:
     while True:
         try:
             operacion = int(input(f"{Fore.GREEN}|>Que operacion desea realizar: {Style.RESET_ALL}"))
-            if operacion < 1 or operacion > 5:
+            if operacion < 1 or operacion > 2:
                 print(f"{Back.RED} |⚠ -Ingrese una opcion valida del menu. {Style.RESET_ALL}")
                 continue
             break  
@@ -160,7 +160,7 @@ while bandera:
             while True:
                 try:
                     presion = float(input(Fore.YELLOW +"|Presión arterial: "+ Style.RESET_ALL))
-                    if presion < 0:
+                    if presion <= 0:
                         print(f"{Back.RED} |⚠ -La presión arterial no puede ser 0 {Style.RESET_ALL}")
                         continue
                     break
@@ -238,28 +238,28 @@ while bandera:
             #Maximos
             if temperatura > max_temperatura:
                 max_temperatura = temperatura
-                temp_max_nombre = nombre_paciente + apellido_paciente
+                temp_max_nombre = nombre_paciente + " " + apellido_paciente
                 temp_max_genero = genero
                 temp_max_edad = edad_paciente
                 temp_max_ingreso = ingreso
 
             if presion > max_presion:
                 max_presion = presion
-                pres_max_nombre = nombre_paciente + apellido_paciente
+                pres_max_nombre = nombre_paciente + " " + apellido_paciente
                 pres_max_genero = genero
                 pres_max_edad = edad_paciente
                 pres_max_ingreso = ingreso
 
             if dolor > max_dolor:
                 max_dolor = dolor
-                dolor_max_nombre = nombre_paciente + apellido_paciente
+                dolor_max_nombre = nombre_paciente + " " + apellido_paciente
                 dolor_max_genero = genero
                 dolor_max_edad = edad_paciente
                 dolor_max_ingreso = ingreso
 
             if frecuencia_cardiaca > max_frec_cardiaca:
                 max_frec_cardiaca = frecuencia_cardiaca
-                frec_cardiaca_max_nombre = nombre_paciente + apellido_paciente
+                frec_cardiaca_max_nombre = nombre_paciente + " "+ apellido_paciente
                 frec_cardiaca_max_genero = genero
                 frec_cardiaca_max_edad = edad_paciente
                 frec_cardiaca_max_ingreso = ingreso
@@ -267,28 +267,28 @@ while bandera:
             #Minimos
             if min_temperatura == 0 or temperatura < min_temperatura:
                 min_temperatura = temperatura
-                temp_min_nombre = nombre_paciente + apellido_paciente
+                temp_min_nombre = nombre_paciente + " " + apellido_paciente
                 temp_min_genero = genero
                 temp_min_edad = edad_paciente
                 temp_min_ingreso = ingreso
 
             if min_presion == 0 or presion < min_presion:
                 min_presion = presion
-                pres_min_nombre = nombre_paciente + apellido_paciente
+                pres_min_nombre = nombre_paciente + " "+apellido_paciente
                 pres_min_genero = genero
                 pres_min_edad = edad_paciente
                 pres_min_ingreso = ingreso
 
             if min_dolor == 0 or dolor < min_dolor:
                 min_dolor = dolor
-                dolor_min_nombre = nombre_paciente + apellido_paciente
+                dolor_min_nombre = nombre_paciente + " " +apellido_paciente
                 dolor_min_genero = genero
                 dolor_min_edad = edad_paciente
                 dolor_min_ingreso = ingreso
 
             if min_frec_cardiaca == 0 or frecuencia_cardiaca < min_frec_cardiaca:
                 min_frec_cardiaca = frecuencia_cardiaca
-                frec_min_nombre = nombre_paciente + apellido_paciente
+                frec_min_nombre = nombre_paciente + " " +apellido_paciente
                 frec_min_genero = genero
                 frec_min_edad = edad_paciente
                 frec_min_ingreso = ingreso
@@ -412,39 +412,35 @@ while bandera:
             agua_paciente = (agua_total_mililitros/1000)
 
             print(f"┌{'─' * ancho}┐")
-            print(f"│ {Fore.RED}{'✙ MEDICPY':<{ancho - 3}}{Style.RESET_ALL}│")
+            print(f"│ {Fore.RED}{'✙ MEDICPY':<35}{Style.RESET_ALL}│")
             print(f"├{'─' * ancho}┤")
 
-            print(f"│ {Fore.GREEN}{'Paciente':<12} →  {nombre_paciente:<25}{Style.RESET_ALL}│")
-            print(f"│ {Fore.GREEN}{'Edad':<12} →  {edad_paciente:<25}{Style.RESET_ALL}│")
-            print(f"│ {Fore.GREEN}{'Genero':<12} →  {genero:<25}{Style.RESET_ALL}│")
-            print(f"│ {Fore.GREEN}{'Sangre':<12} →  {sangre:<25}{Style.RESET_ALL}│")
+            print(f"│ {Fore.GREEN}{'Paciente':<12} →  {nombre_paciente:<19}{Style.RESET_ALL}│")
+            print(f"│ {Fore.GREEN}{'Edad':<12} →  {edad_paciente:<19}{Style.RESET_ALL}│")
+            print(f"│ {Fore.GREEN}{'Genero':<12} →  {genero:<19}{Style.RESET_ALL}│")
+            print(f"│ {Fore.GREEN}{'Sangre':<12} →  {sangre:<19}{Style.RESET_ALL}│")
 
             print(f"├{'─' * ancho}┤")
 
-            print(f"│ {Fore.GREEN}{'Medicación':<12} →  {medicamentos:<25}{Style.RESET_ALL}│")
-            print(f"│ {Fore.GREEN}{'Respiración':<12} →  {respiracion:<25}{Style.RESET_ALL}│")
-            print(f"│ {Fore.GREEN}{'Presión':<12} →  {presion:<25}{Style.RESET_ALL}│")
-            print(f"│ {Fore.GREEN}{'Temperatura':<12} →  {temperatura:<25}{Style.RESET_ALL}│")
-            print(f"│ {Fore.GREEN}{'Dolor':<12} →  {dolor:<25}{Style.RESET_ALL}│")
-            print(f"│ {Fore.GREEN}{'Frecuencia':<12} →  {frecuencia_cardiaca:<25}{Style.RESET_ALL}│")
-            print(f"│ {Fore.GREEN}{'Ejercicio':<12} →  {ejercicio:<25}{Style.RESET_ALL}│")
-            print(f"│ {Fore.GREEN}{'Agua':<12} →  {agua_total_mililitros:<25}{Style.RESET_ALL}│")
+            print(f"│ {Fore.GREEN}{'Medicación':<12} →  {medicamentos:<19}{Style.RESET_ALL}│")
+            print(f"│ {Fore.GREEN}{'Respiración':<12} →  {respiracion_str:<19}{Style.RESET_ALL}│")
+            print(f"│ {Fore.GREEN}{'Presión':<12} →  {presion:<19}{Style.RESET_ALL}│")
+            print(f"│ {Fore.GREEN}{'Temperatura':<12} →  {temperatura:<19}{Style.RESET_ALL}│")
+            print(f"│ {Fore.GREEN}{'Dolor':<12} →  {dolor:<19}{Style.RESET_ALL}│")
+            print(f"│ {Fore.GREEN}{'Frecuencia':<12} →  {frecuencia_cardiaca:<19}{Style.RESET_ALL}│")
+            print(f"│ {Fore.GREEN}{'Ejercicio':<12} →  {ejercicio:<19}{Style.RESET_ALL}│")
+            print(f"│ {Fore.GREEN}{'Agua':<12} →  {agua_total_mililitros:<19}{Style.RESET_ALL}│")
 
             print(f"└{'─' * ancho}┘")
 
             pacientes += 1
             
-            if dolor_alto:
-                if fiebre:
-                    if riesgo_edad:
-                        casos_criticos += 1
-            elif dolor_alto:
-                if fiebre:
-                    if vomitos:
-                        if edad_paciente < 12:
-
-                            casos_criticos_pediatricos += 1
+            if dolor_alto and fiebre and riesgo_edad:
+                casos_criticos += 1
+            
+            if dolor_alto and fiebre and edad_paciente < 12:
+                casos_criticos_pediatricos += 1
+                
             continuar = input(Fore.GREEN + f"|>Desea realizar otro archivo? (s/n): "+ Style.RESET_ALL)
 
             if continuar != "s":
@@ -626,7 +622,7 @@ while bandera:
                 """)
                 caso_critico = input(Fore.GREEN + f"|>Que caso critico desea ver: "+ Style.RESET_ALL)
                 if caso_critico == "1":
-                    
+                                
                     print(f"┌{'─' * ancho}┐")
                     print( f"│ {Fore.RED} {'✙ MEDICPY':<{ancho - 3}} {Style.RESET_ALL}│ ")
                     print(f"├{'─' * ancho}┤")
@@ -638,14 +634,14 @@ while bandera:
                     print(f"│  {'Genero':<9} →  {temp_max_genero:<21}│")
                     print(f"│  {'Temp':<9} →  {str(max_temperatura) + ' °C  ⚠':<21}│")
                     print(f"└{'─' * ancho}┘")
-
+                    
                     volver = input(Fore.YELLOW + f"|>volver? (s/n): "+ Style.RESET_ALL)
                     if volver != "s":
                         print(Fore.YELLOW + f"|>Saliendo..."+ Style.RESET_ALL)
                         bandera = False
-                    
+                        
                 elif caso_critico == "2":
-                    
+                
                     print(f"┌{'─' * ancho}┐")
                     print( f"│ {Fore.RED} {'✙ MEDICPY':<{ancho - 3}} {Style.RESET_ALL}│ ")
                     print(f"├{'─' * ancho}┤")
@@ -657,14 +653,14 @@ while bandera:
                     print(f"│  {'Genero':<9} →  {pres_max_genero:<21}│")
                     print(f"│  {'Presion':<9} →  {str(max_presion):<21}│")
                     print(f"└{'─' * ancho}┘")
-
+                    
                     volver = input(Fore.YELLOW + f"|>volver? (s/n): "+ Style.RESET_ALL)
                     if volver != "s":
                         print(Fore.YELLOW + f"|>Saliendo..."+ Style.RESET_ALL)
                         bandera = False
-                        
-                elif caso_critico == "3":
                     
+                elif caso_critico == "3":
+                
                     print(f"┌{'─' * ancho}┐")
                     print( f"│ {Fore.RED} {'✙ MEDICPY':<{ancho - 3}} {Style.RESET_ALL}│ ")                    
                     print(f"├{'─' * ancho}┤")
@@ -683,7 +679,7 @@ while bandera:
                         bandera = False
                         
                 elif caso_critico == "4":
-                    
+                
                     print(f"┌{'─' * ancho}┐")
                     print( f"│ {Fore.RED} {'✙ MEDICPY':<{ancho - 3}} {Style.RESET_ALL}│ ")
                     print(f"├{'─' * ancho}┤")
@@ -695,13 +691,13 @@ while bandera:
                     print(f"│  {'Genero':<9} →  {frec_cardiaca_max_genero:<21}│")
                     print(f"│  {'Frecuencia':<9} →  {str(max_frec_cardiaca):<21}│")
                     print(f"└{'─' * ancho}┘")
-                    
-                    volver = input(Fore.YELLOW + f"|>volver? (s/n): "+ Style.RESET_ALL)
-                    if volver != "s":
-                        print(Fore.YELLOW + f"|>Saliendo..."+ Style.RESET_ALL)
-                        bandera = False
+                
+                volver = input(Fore.YELLOW + f"|>volver? (s/n): "+ Style.RESET_ALL)
+                if volver != "s":
+                    print(Fore.YELLOW + f"|>Saliendo..."+ Style.RESET_ALL)
+                    bandera = False
                         
-            elif casos == 2:
+            if casos == 2:
                 print("""
     ====================================
     |              -Casos-             |
@@ -714,7 +710,6 @@ while bandera:
                 """)
                 caso_leve = input(Fore.GREEN + f"|>Que caso desea ver: "+ Style.RESET_ALL)
                 if caso_leve == "1":
-
                     print(f"┌{'─' * ancho}┐")
                     print( f"│ {Fore.RED} {'✙ MEDICPY':<{ancho - 3}} {Style.RESET_ALL}│ ")
                     print(f"├{'─' * ancho}┤")
@@ -783,6 +778,12 @@ while bandera:
                     print(f"│  {'Genero':<9} →  {frec_min_genero:<21}│")
                     print(f"│  {'Frecuencia':<9} →  {str(min_frec_cardiaca):<21}│")
                     print(f"└{'─' * ancho}┘")
+                    
+                    volver = input(Fore.YELLOW + f"|>volver? (s/n): "+ Style.RESET_ALL)
+                    if volver != "s":
+                        print(Fore.YELLOW + f"|>Saliendo..."+ Style.RESET_ALL)
+                        bandera = False
+                        
             elif casos == 3:
                 if pacientes > 0:
                     promedio_temperatura = suma_temperatura / pacientes
