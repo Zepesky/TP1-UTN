@@ -2,4 +2,11 @@
 # La función debe aceptar tres argumentos y devolver el número más grande.
 
 def maximo(a, b, c):
-    pass
+    if a >= b and a >= c:
+        return a
+    elif b >= a and b >= c:
+        return b
+    else:
+        return c
+
+

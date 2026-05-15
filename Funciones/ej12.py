@@ -1,4 +1,4 @@
-# Consigna: Crear una función que imprima la tabla de multiplicar de un número
+# Consigna: Crear una función que imprima la tabla de multiplicar de un núm   ero
 # recibido como parámetro. La función debe aceptar parámetros opcionales (inicio
 # y fin) para definir el rango de multiplicación. Por defecto es del 1 al 10.
 

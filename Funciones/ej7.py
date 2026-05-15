@@ -2,4 +2,7 @@
 # La función RETORNA True si el número es par, False en caso contrario.
 
 def es_par(numero):
-    pass
+    if numero %2 == 0:
+        return True
+    else:
+        return False
