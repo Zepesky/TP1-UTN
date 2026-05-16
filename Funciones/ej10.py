@@ -1,7 +1,7 @@
 # Consigna: Crear una función que reciba un número y retorne True si el número
 # es primo, False en caso contrario.
 
-from Funciones import pedir_entero
+from funciones import pedir_entero
 
 def es_primo(numero):
     if numero < 2:

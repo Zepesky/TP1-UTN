@@ -3,4 +3,9 @@
 # y fin) para definir el rango de multiplicación. Por defecto es del 1 al 10.
 
 def tabla_multiplicar(numero, inicio=1, fin=10):
-    pass
+    for i in range(inicio, fin + 1):
+        print(numero, "x" , i , "=", numero * i)
+
+tabla_multiplicar(5)
+tabla_multiplicar(3, 3, 7)
+tabla_multiplicar(7, fin=15)

@@ -6,7 +6,8 @@
 # Tip: reutilizar la función es_primo() del ejercicio anterior.
 
 from ej10 import es_primo
-from Funciones import pedir_entero
+
+from funciones import pedir_entero
 
 def mostrar_primos(limite):
     contador_primos = 0
