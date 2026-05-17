@@ -7,4 +7,13 @@
 # Caso recursivo: potencia(base, exp) = base * potencia(base, exp - 1)
 
 def potencia(base, exponente):
-    pass
+    
+    if exponente == 0:
+        return 1
+    
+    return base * potencia(base, exponente - 1)
+
+
+resultado = potencia(2, 4)
+
+print(resultado)

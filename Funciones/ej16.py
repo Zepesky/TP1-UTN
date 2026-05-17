@@ -7,5 +7,12 @@
 # Caso base: suma_digitos(n) = n  cuando n < 10
 # Caso recursivo: suma_digitos(n) = (n % 10) + suma_digitos(n // 10)
 
+
+from ej
+
 def suma_digitos(numero):
-    pass
+    
+    entrada = input(get_int()
+    
+    if numero < 10:
+        
