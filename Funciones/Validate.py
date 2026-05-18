@@ -34,7 +34,7 @@ def validate_float(numero):
     for i in range(inicio , len(numero)):
         if numero[i]== ".":
             puntos += 1
-            if puntos > 1 or i == len(numero) - 1:
+            if puntos > 1 or numero[i] == len(numero) - 1:
                 return False
         elif numero[i] < "0" or numero[i] > "9":
             return False
